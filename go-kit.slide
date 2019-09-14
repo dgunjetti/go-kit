@@ -1,0 +1,91 @@
+Go kit
+Programming toolkit for microservices. 
+
+Deepak Gunjetti
+Software Architect @ Andcloud
+deepak@andcloud.io
+@dgunjetti
+
+* Go kit
+
+- Go kit is a programming toolkit for building microservices in Go, including packages and interfaces.
+
+- It is similar to Java Spring Boot but smaller in scope.
+
+* Microservices
+
+- Almost all of contemporary software engineering is focused on the singular goal of improving time-to-market. 
+
+- Microservices are an evolution of the service-oriented architecture pattern that elegantly eliminate organizational friction, giving your engineers and teams the autonomy they need to continuously ship, iterate, and improve.
+
+- Gokit fills in the gaps left by the standard library, and makes Go a first-class language for writing microservices in any organization.
+
+
+* Gokit supported packages
+
+- Go kit comes to us with set of abstractions, packages and interfaces for the developer
+
+- JSON over HTTP  for external communication
+
+- gRPC  for internal communication
+
+- Logging
+
+- Circuit breakers
+
+- Request tracing
+
+- Service discovery
+
+* App
+
+.image img/gokit02.jpg
+
+* Gokit onion model
+
+.image img/gokit01.jpg
+
+* Go kit 
+
+    go get github.com/go-kit/kit
+
+
+* Go kit - stringsvc service 
+
+- we model a service as an interface.
+
+.code src/stringsvc/pkg/stringsvc/stringsvc.go  /START OMIT/,/END OMIT/
+
+* stringsvc service 
+
+.code src/stringsvc/pkg/stringsvc/stringsvc.go  /START1 OMIT/,/END1 OMIT/
+
+* Go kit - Request & Response
+
+- In Go kit, the primary messaging pattern is RPC.
+
+- For each method, we define request and response structs
+
+.code src/stringsvc/pkg/io/io.go  /START OMIT/,/END OMIT/
+
+* Request & Response
+
+.code src/stringsvc/pkg/io/io.go  /START1 OMIT/,/END1 OMIT/
+
+* Endpoints
+
+- Go kit provides much of its functionality through an abstraction called an endpoint.
+
+- It represents a single RPC.
+
+- We’ll write simple adapters to convert each of our service’s methods into an endpoint.
+
+- Each adapter takes a StringService, and returns an endpoint that corresponds to one of the methods.
+
+* Transports
+
+- we use JSON over HTTP. Go kit provides a helper struct, in package transport/http.
+
+
+* Middlewares
+
